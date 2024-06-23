@@ -8,7 +8,6 @@ import './App.css';
 const App = () => {
   const svgRef = useRef();
   const [selectedNode, setSelectedNode] = useState(null);
-  const [transactionData, setTransactionData] = useState(null);
   const [voyagerTransactionData, setVoyagerTransactionData] = useState(null);
   const [voyagerContractData, setVoyagerContractData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -167,7 +166,6 @@ const App = () => {
         setTimeout(async () => {
           const statusResponse = await axios.get(`http://localhost:3002/query-status/${requestId}`);
           const newTransactionData = statusResponse.data;
-          setTransactionData(newTransactionData);
   
           // Save new transactions to local storage
           const savedTransactions = JSON.parse(localStorage.getItem('transactions')) || [];
